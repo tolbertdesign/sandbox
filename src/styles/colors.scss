@@ -1,0 +1,8 @@
+$primary: #f26f4d;
+$secondary: #8471b3;
+
+$page-gradient: linear-gradient(
+  -200deg,
+  $primary 40%,
+  adjust-hue($primary, -5%) 80%
+);

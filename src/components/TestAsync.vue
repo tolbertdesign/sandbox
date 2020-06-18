@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="async">
@@ -10,14 +9,14 @@
 
 <script>
 export default {
-  data () {
-    return { time: performance.now().toFixed(2) }
+  data() {
+    return {time: performance.now().toFixed(2)}
   },
 }
 </script>
 
 <style scoped>
 .async {
-  color: #8B4513;
+  color: #8b4513;
 }
 </style>

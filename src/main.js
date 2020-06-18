@@ -1,23 +1,16 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-// import { store } from './store'
+import {createApp} from 'vue'
+
 import App from './App.vue'
-import Index from './views/index.vue'
+import store from './vuex/store'
+import router from './router'
+import AtSign from './directives/at-sign'
+import DefaultLayout from './layouts/default.vue'
 
-import './index.css'
-// createApp(App).mount('#app')
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      path: '/:name?',
-      component: Index,
-    }
-  ]
-})
+import 'tailwindcss/tailwind.css'
 
 const app = createApp(App)
+app.use(store)
 app.use(router)
-// app.use(store)
+app.component('DefaultLayout', DefaultLayout)
+app.directive('AtSign', AtSign)
 app.mount('#app')

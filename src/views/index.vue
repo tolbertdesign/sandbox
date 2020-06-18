@@ -1,39 +1,25 @@
 <template>
   <div>
-    <VButton />
+    <!-- <VButton />
 
-    <h2>Async Component</h2>
+    <h1>Stories</h1>
 
-    <pre>{{ route.params.name }}</pre>
-
-    <div>
-      <h1>Stories</h1>
-
-      <div v-for="story in stories" :key="story">
-        <RouterLink :to="`/${story}`">
-          Stories of {{ story }}
-        </RouterLink>
-      </div>
-
-      <div v-if="currentStory">
-        <h2>Stories for {{ currentStory.name }}</h2>
-        <component :is="currentStory.component" />
-      </div>
+    <div v-for="story in stories" :key="story">
+      <RouterLink :to="`/${story}`">
+        {{ story }}
+      </RouterLink>
     </div>
 
-    <TestAsync />
+    <div v-if="currentStory">
+      <h2>Stories for {{ currentStory.name }}</h2>
 
-    <TestJsx />
+      <component :is="currentStory.component" />
+    </div> -->
 
-    <p class="dev">
-      <code>__DEV__: {{ dev }}</code>
-    </p>
-    <p class="base">
-      <code>process.env.BASE_URL: {{ base }}</code>
-    </p>
     <div v-if="error">
       {{ error }}
     </div>
+
     <div v-else>
       <Suspense>
         <template v-slot>
@@ -48,29 +34,34 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent } from 'vue'
-import { useRoute } from 'vue-router'
+import {split} from 'lodash-es'
+import {computed, defineAsyncComponent} from 'vue'
+import {useRoute} from 'vue-router'
+
 import Test from '../components/Test.vue'
 import TestJsx from '../components/TestJsx.vue'
 import VButton from '../components/VButton.vue'
 import VLoader from '../components/VLoader.vue'
 import ButtonStories from '../components/Button.stories.vue'
 import CardStories from '../components/Card.stories.vue'
+// import path from './foo.png'
 
 export default {
   name: 'App',
   setup() {
-     const storyMap = {
+    const storyMap = {
       button: {
         name: 'button',
-        component: ButtonStories
+        component: ButtonStories,
       },
       card: {
         name: 'card',
-        component: CardStories
-      }
+        component: CardStories,
+      },
     }
+
     const stories = Object.keys(storyMap)
+
     const route = useRoute()
 
     const currentStory = computed(() => {
@@ -84,7 +75,7 @@ export default {
       storyMap,
       stories,
       route,
-      currentStory
+      currentStory,
     }
   },
   components: {
@@ -92,14 +83,15 @@ export default {
     VLoader,
     Test,
     TestJsx,
-    TestAsync: defineAsyncComponent(() => import('../components/TestAsync.vue')),
+    TestAsync: defineAsyncComponent(() =>
+      import('../components/TestAsync.vue'),
+    ),
   },
   data: () => ({
+    error: false,
     dev: __DEV__,
     base: process.env.BASE_URL,
+    modalOpen: false,
   }),
-  mounted () {
-    console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)
-  },
 }
 </script>

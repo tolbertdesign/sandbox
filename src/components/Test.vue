@@ -1,12 +1,16 @@
 <template>
   <div>
     <h3>Welcome to our Vue suspense demo in action</h3>
+
     <div>
       <h3>I am {{ userInfo.name }}</h3>
+
       <span>
         <u>Find me on</u>
       </span>
+
       <p>Github: {{ userInfo.github }}</p>
+
       <p>Twitter: {{ userInfo.twitter }}</p>
     </div>
   </div>
@@ -15,15 +19,15 @@
 <script>
 export default {
   name: 'Test',
-  async setup () {
+  async setup() {
     const userInfo = await fetchUser()
-    return { userInfo }
+    return {userInfo}
   },
 }
-function timeout (ms) {
+function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
-async function fetchUser () {
+async function fetchUser() {
   await timeout(4000)
   return {
     name: 'Victor Tolbert',

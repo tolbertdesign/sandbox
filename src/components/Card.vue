@@ -11,26 +11,26 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import {defineComponent} from 'vue'
 export default defineComponent({
   props: {
     title: {
-      type: String
+      type: String,
     },
     body: {
-      type: String
+      type: String,
     },
     color: {
-      type: String
-    }
+      type: String,
+    },
   },
   setup(props) {
     return {
       style: {
-        border: `2px solid ${props.color}`
-      }
+        border: `2px solid ${props.color}`,
+      },
     }
-  }
+  },
 })
 </script>
 
@@ -41,7 +41,8 @@ export default defineComponent({
   border-radius: 8px;
   box-shadow: 0px 0px 5px 2px lightgrey;
 }
-.card-title, .card-body {
+.card-title,
+.card-body {
   padding: 10px;
 }
 </style>

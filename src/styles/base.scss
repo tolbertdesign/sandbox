@@ -1,0 +1,14 @@
+$primary: #f26f4d;
+$secondary: #8471b3;
+
+$page-gradient: linear-gradient(
+  -200deg,
+  $primary 40%,
+  adjust-hue($primary, -5%) 80%
+);
+
+.page {
+  background-image: $page-gradient;
+  min-height: 100vh;
+  padding: 1rem;
+}

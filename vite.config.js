@@ -2,6 +2,7 @@ const path = require('path')
 
 module.exports = {
   alias: {
+    // 'vue': 'vue/dist/vue.esm-bundler.js',
     '/@/': path.resolve(__dirname, './src'),
   },
   jsx: 'preact',

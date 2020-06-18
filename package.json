@@ -1,24 +1,82 @@
 {
-  "name": "vite-app",
+  "name": "sandbox",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 8088",
     "dev-build": "vite build --mode development",
     "dev-debug": "vite --debug",
-    "build": "vite build"
+    "build": "vite build",
+    "mobile": "sudo http-server dist -a 10.0.0.58 --port=80",
+    "servestatic": "http-server ./dist",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest",
+    "test:unit": "jest --coverage",
+    "test:integration": "cypress open",
+    "test:watch": "jest --watch",
+    "deploy": "--base=/your/public/path/"
   },
   "dependencies": {
-    "vue": "^3.0.0-beta.14",
-    "vuex": "^4.0.0-beta.2",
-    "vue-router": "^4.0.0-alpha.10"
+    "gsap": "latest",
+    "portal-vue": "^2.1.7",
+    "vue": "^3.0.0-beta.15",
+    "vue-router": "^4.0.0-alpha.13",
+    "vuex": "^4.0.0-beta.2"
   },
   "devDependencies": {
+    "@babel/core": "7.10.2",
     "@tailwindcss/custom-forms": "^0.2.1",
     "@tailwindcss/ui": "^0.3.0",
-    "@vue/compiler-sfc": "^3.0.0-beta.14",
+    "@vue/compiler-sfc": "^3.0.0-beta.15",
     "autoprefixer": "^9.8.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
+    "cypress": "^4.8.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.0.0-alpha.6",
+    "http-server": "^0.12.3",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.11",
+    "lodash-es": "^4.17.15",
+    "miragejs": "^0.1.40",
+    "postcss-nesting": "^7.0.1",
     "preact": "^10.4.4",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.8",
     "tailwindcss": "^1.4.6",
-    "vite": "^0.20.2"
+    "tailwindcss-aspect-ratio": "^3.0.0",
+    "tailwindcss-elevation": "^0.3.4",
+    "tailwindcss-scrims": "^1.0.0",
+    "tailwindcss-spinner": "^1.0.0",
+    "vite": "^0.20.8"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/lib/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 50,
+        "lines": 33,
+        "statements": 25
+      }
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": "yarn lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

@@ -6,15 +6,15 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
-import { renderPreact } from './testJsx.jsx'
+import {ref, onMounted} from 'vue'
+import {renderPreact} from './testJsx.jsx'
 export default {
-  setup () {
+  setup() {
     const root = ref()
     onMounted(() => {
       renderPreact(root.value)
     })
-    return { root }
+    return {root}
   },
 }
 </script>

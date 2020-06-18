@@ -23,7 +23,7 @@
   transform-origin: 40px 40px;
 }
 .vLoader div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 7px;
