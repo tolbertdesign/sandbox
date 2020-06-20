@@ -89,8 +89,6 @@ export default {
   },
   data: () => ({
     error: false,
-    dev: __DEV__,
-    base: process.env.BASE_URL,
     modalOpen: false,
   }),
 }
