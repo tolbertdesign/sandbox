@@ -1,1 +1,1 @@
-# tolbertdesign/sandbox (vticonsulting.com)
+# tolbertdesign/sandbox
