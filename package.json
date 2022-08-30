@@ -19,6 +19,6 @@
     "autoprefixer": "^9.8.0",
     "preact": "^10.4.4",
     "tailwindcss": "^1.4.6",
-    "vite": "^0.20.2"
+    "vite": "^2.9.13"
   }
 }
